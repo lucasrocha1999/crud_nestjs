@@ -48,6 +48,7 @@ export class TaskService {
   }
 
   delete(id: number) {
-
+    const index = this.tasks.findIndex((value) => value.id == id);
+    this.tasks.splice(index, 1);
   }
 }
