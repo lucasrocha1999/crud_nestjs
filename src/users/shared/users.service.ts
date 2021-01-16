@@ -21,7 +21,11 @@ export class UsersService {
   }
 
   async update(id: string, user: User) {
-    await this.userModel.updateOne({ _id: id }, User).exec();
+    await this.userModel.updateOne({ _id: id }, user).exec();
     return this.getById(id);
+  }
+
+  async delete(id: string) {
+    return await this.userModel.deleteOne({ _id: id }).exec();
   }
 }
