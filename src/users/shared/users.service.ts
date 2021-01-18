@@ -15,13 +15,17 @@ export class UsersService {
     return await this.userModel.findById(id).exec();
   }
 
+  async getByEmail(email: string) {
+    return await this.userModel.findOne({ email }).exec();
+  }
+
   async create(user: User) {
     const createdUser = new this.userModel(user);
     return await createdUser.save();
   }
 
   async update(id: string, user: User) {
-    await this.userModel.updateOne({ _id: id }, user).exec();
+    await this.userModel.updateOne({ _id: id }, User).exec();
     return this.getById(id);
   }
 
